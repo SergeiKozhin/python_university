@@ -112,18 +112,15 @@ print(a)
 
 #11. Написать программу “Угадай число”. Программа должна с помощью наводящих вопросов отгадать число.
 
-import math
-x = 1
-y = 10
-
-answer = None # Да или нет
-print('Загайте число от 1 до 10')
-
-while x != y:
-    answer = input('Загаданное число больше, чем ' + str(math.ceil((y - x)/2)) + '?  ')
-    if answer == 'Да':
-        x = math.ceil((y - x)/2)
+left = 1
+right = 100
+while True:
+    current = (left+right)//2
+    answer = input('Ваше число:{}?(Да, Больше, Меньше)'.format(current))
+    if answer.lower() == 'да':
+        print('Угадал!')
+        break
+    elif answerlower == 'больше':
+        left = current + 1
     else:
-        y = math.ceil((y - x)/2)
-print(x)
-
+        right = current - 1
