@@ -99,13 +99,31 @@ print(a)
 
 #10. Найти количество цифр 5 в числе
 
+'''
 a = 0
 number = input('Введите любое число: ')
 for i in number:
     if int(i) == 5:
         a += 1
 print(a)
+'''
     
 
 
 #11. Написать программу “Угадай число”. Программа должна с помощью наводящих вопросов отгадать число.
+
+import math
+x = 1
+y = 10
+
+answer = None # Да или нет
+print('Загайте число от 1 до 10')
+
+while x != y:
+    answer = input('Загаданное число больше, чем ' + str(math.ceil((y - x)/2)) + '?  ')
+    if answer == 'Да':
+        x = math.ceil((y - x)/2)
+    else:
+        y = math.ceil((y - x)/2)
+print(x)
+
