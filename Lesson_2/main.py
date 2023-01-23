@@ -81,3 +81,31 @@ if 5 in list_of_digits:
 else:
     print('В числе нет цифры 5')
 '''
+
+#9. Найти максимальную цифру в числе
+
+'''
+list_of_digits = []
+a = 0
+number = input('Введите любое число: ')
+for i in number:
+    list_of_digits.append(int(i))
+for i in list_of_digits:
+    if i > a:
+        a = i
+print(a)
+'''
+
+
+#10. Найти количество цифр 5 в числе
+
+a = 0
+number = input('Введите любое число: ')
+for i in number:
+    if int(i) == 5:
+        a += 1
+print(a)
+    
+
+
+#11. Написать программу “Угадай число”. Программа должна с помощью наводящих вопросов отгадать число.
