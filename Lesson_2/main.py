@@ -9,17 +9,15 @@ while stroka < 6:
 
 #2. Пользователь в цикле вводит 10 цифр. Найти количество введенных пользователем цифр 5.
 
+
 '''
-list_of_digits = []
+count = 0
 attempt = 0
 while attempt < 10:
     answer = int(input('Введите любую цифру:  '))
-    list_of_digits.append(answer)
-    attempt += 1
-count = 0
-for i in list_of_digits:
-    if i == 5:
+    if answer == 5:
         count += 1
+    attempt += 1
 print('Количество цифр 5 в цикле равно: ', count)
 '''
 
@@ -112,6 +110,7 @@ print(a)
 
 #11. Написать программу “Угадай число”. Программа должна с помощью наводящих вопросов отгадать число.
 
+'''
 left = 1
 right = 100
 while True:
@@ -120,7 +119,8 @@ while True:
     if answer.lower() == 'да':
         print('Угадал!')
         break
-    elif answerlower == 'больше':
+    elif answer.lower() == 'больше':
         left = current + 1
     else:
         right = current - 1
+'''
