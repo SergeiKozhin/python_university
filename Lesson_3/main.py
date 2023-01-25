@@ -1,4 +1,5 @@
 
 #1. Методами строк очистить текст от знаков препинания;
 
-stroka = ""
+with open('text.txt', encoding='UTF-8') as f:
+    print(f.read())
