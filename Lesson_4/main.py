@@ -207,3 +207,18 @@ def main():
     
 
 # main()
+
+
+
+# 7. задание 4 через регулярное выражение
+
+
+import re
+def last_time():
+    with open('log.txt', encoding='UTF-8') as f:
+        file = f.read()
+    f.close()
+    max_time = max(re.findall(r'\d\d:\d\d:\d\d', file))
+    return [i for i in file.split('\n') if i.find(max_time) != -1][0]
+
+print(last_time())
