@@ -1,14 +1,11 @@
-a = [i for i in range(0, 1001)]
+a = 5
 
 
-def prime_number(n):
-    lst = []
-    for i in a:
-        for j in lst:
-            if i % j == 0:
-                break
-        else:
-            lst.append(i)
-    return lst
-
-print(prime_number(a))
+def is_prime(a):
+    if a < 2:
+        return False
+    for i in range(2, int(a ** 0.5 + 1)):
+        if a % i == 0:
+            return False
+    else:
+        return True
