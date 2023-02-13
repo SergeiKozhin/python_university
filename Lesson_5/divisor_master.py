@@ -45,10 +45,9 @@ def kanon(a):
         kanon_list.append(int(a))
     return kanon_list
 
-print(kanon(a))
-
 
 # 5. функция выводит самый большой делитель (не обязательно простой) числа.
+
 def max_divisor(a):
     return divisors(a)[-1]
 
