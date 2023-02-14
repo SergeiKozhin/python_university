@@ -74,6 +74,7 @@ def main():
 
     right = 0
     wrong= 0
+    count = 0
     for i in people:
 
         question = Label(root, text='Когда родился ' + str(i) + ' ? Ответ введите в формате dd.mm.yyyy')
@@ -81,8 +82,11 @@ def main():
         global answer
         answer = Entry(root)
         answer.pack()
-        button_1 = Button(root, text='Ввод', command=answer_func)
-        button_1.pack()
+        answer.focus()
+        button_1 = Button(root, text='Ввод', command=answer_func).pack()
+        # button_1.pack()
+        answer.focus()
+        # count +=1
         # end_answer = answer.get()
         # print(end_answer)
         # if end_answer == people[i]:
