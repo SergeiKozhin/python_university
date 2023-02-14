@@ -3,6 +3,12 @@ from tkinter import *
 
 root = Tk()
 
+answer = 0
+end_answer = 0
+def answer_func():
+    end_answer = answer.get()
+    print(end_answer)
+
 def main():
     global root
     global label
@@ -72,22 +78,21 @@ def main():
 
         question = Label(root, text='Когда родился ' + str(i) + ' ? Ответ введите в формате dd.mm.yyyy')
         question.pack()
-        answer = Entry(root, bd=2)
+        global answer
+        answer = Entry(root)
         answer.pack()
-        button_1 = Button(root, text='Ввод')
+        button_1 = Button(root, text='Ввод', command=answer_func)
         button_1.pack()
-        end_answer = answer.get()
-        print(end_answer)
+        # end_answer = answer.get()
+        # print(end_answer)
         # if end_answer == people[i]:
         #     print('Верно')
-            
         #     right += 1
         #     question.destroy()
         #     answer.destroy()
         #     button_1.destroy()
         # else:
         #     print('Он родился ' + days[people[i][:2]] + ' ' + month[people[i][3:5]] + ' ' + people[i][-4:] + ' года')
-        #     # print('-----------------------------------')
         #     wrong += 1
         #     question.destroy()
         #     answer.destroy()
@@ -104,3 +109,5 @@ button = Button(root, text='Викторина', command=main)
 button.pack()
 
 root.mainloop()
+
+
