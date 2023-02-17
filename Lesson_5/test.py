@@ -3,17 +3,6 @@ from tkinter import *
 
 root = Tk()
 
-answer = 0
-end_answer = 0
-def answer_func():
-    global answer
-    end_answer = answer.get()
-    print(end_answer)
-
-
-    
-# label.destroy()
-# button.destroy()
 days = {
     '01' : 'первого',
     '02' : 'второго',
@@ -63,13 +52,6 @@ month = {
     '12' : 'декабря'
 }
 
-# people = {
-#     'Юрий Гагарин' : '01.03.1934',
-#     'Линус Торвальдс' : '28.12.1969',
-#     'Гвидо ван Россум' : '31.01.1956',
-#     'Павел Дуров' : '10.10.1984',
-#     'Стив Джобс' : '24.02.1955'
-
 people = ['Юрий Гагарин', '01.03.1934', 'Линус Торвальдс', '28.12.1969', 'Гвидо ван Россум', '31.01.1956', 'Павел Дуров', '10.10.1984', 'Стив Джобс', '24.02.1955']
 
 right = 0
@@ -79,35 +61,53 @@ b = 1
 
 
 def main():
+    global answer
+    global question
     label.destroy()
     button.destroy()
     question = Label(root, text='Когда родился ' + str(people[a]) + ' ? Ответ введите в формате dd.mm.yyyy').pack()
     answer = Entry(root)
     answer.pack()
-    button_1 = Button(root, text='Ввод', command=answer_func).pack()
-    # end_answer = answer.get()
-    # print(end_answer)
-    # answer.focus()
-    # count +=1
-    # end_answer = answer.get()
-    # if end_answer == people[i]:
-    #     print('Верно')
-    #     right += 1
-    #     question.destroy()
-    #     answer.destroy()
-    #     button_1.destroy()
-    # else:
-    #     print('Он родился ' + days[people[i][:2]] + ' ' + month[people[i][3:5]] + ' ' + people[i][-4:] + ' года')
-    #     wrong += 1
-    #     question.destroy()
-    #     answer.destroy()
-    #     button_1.destroy()
+    button_1 = Button(root, text='Ввод', command=lambda: answer_func(main)).pack()
+    
+    def answer_func(main):
+        global answer
+        global people
+        global a
+        global b
+        global right
+        global wrong
+        global question
+        global answer
+        global button_1
+        
+        end_answer = answer.get()
+        if end_answer == people[b]:
+            # print('Верно')
+            label_1 = Label(root, text='Верно!').pack()
+            right += 1
+            a += 2
+            b += 2
+            # question.destroy()
+            # answer.destroy()
+            # button_1.destroy()
+        else:
+            otvet = ('Он родился ' + days[people[b][:2]] + ' ' + month[people[b][3:5]] + ' ' + people[b][-4:] + ' года')
+            label_2 = Label(root, text=otvet).pack()
+            wrong += 1
+            a += 2
+            b += 2
+        while a < 8:
+            main()
+        # question.destroy()
+        # answer.destroy()
+        # button_1.destroy()
     # print('Количество правильных ответов: ', right)
     # print('Количество неправильных ответов: ', wrong)
     # print('Процент правильных ответов: ', 20 * right)
 
 root.title('Викторина')
-root.geometry('800x300')
+root.geometry('800x600')
 label = Label(root, text='Выберите нужное из меню')
 label.pack()
 button = Button(root, text='Викторина', command=main)
