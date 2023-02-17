@@ -7,9 +7,9 @@ def is_prime(a):
         return False
     for i in range(2, int(a ** 0.5 + 1)):
         if a % i == 0:
-            return False
+            return 'Число не простое'
     else:
-        return True
+        return 'Число простое'
 
 
 # 2. выводит список всех делителей числа;
@@ -43,13 +43,10 @@ def kanon(a):
         i = i + 1
     if a > 1:
         kanon_list.append(int(a))
-    return kanon_list
+    return ('*').join(map(str, kanon_list))
 
 
 # 5. функция выводит самый большой делитель (не обязательно простой) числа.
 
 def max_divisor(a):
     return divisors(a)[-1]
-
-
-
