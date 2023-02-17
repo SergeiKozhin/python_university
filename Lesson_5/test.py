@@ -6,6 +6,7 @@ root = Tk()
 answer = 0
 end_answer = 0
 def answer_func():
+    global answer
     end_answer = answer.get()
     print(end_answer)
 
@@ -62,65 +63,50 @@ month = {
     '12' : 'декабря'
 }
 
-people = {
-    'Юрий Гагарин' : '01.03.1934',
-    'Линус Торвальдс' : '28.12.1969',
-    'Гвидо ван Россум' : '31.01.1956',
-    'Павел Дуров' : '10.10.1984',
-    'Стив Джобс' : '24.02.1955'
-}
+# people = {
+#     'Юрий Гагарин' : '01.03.1934',
+#     'Линус Торвальдс' : '28.12.1969',
+#     'Гвидо ван Россум' : '31.01.1956',
+#     'Павел Дуров' : '10.10.1984',
+#     'Стив Джобс' : '24.02.1955'
+
+people = ['Юрий Гагарин', '01.03.1934', 'Линус Торвальдс', '28.12.1969', 'Гвидо ван Россум', '31.01.1956', 'Павел Дуров', '10.10.1984', 'Стив Джобс', '24.02.1955']
 
 right = 0
 wrong= 0
-count = 0
-def question(i):
-    global label
-    global button
-    label.destroy()
-    button.destroy()
-    question_1 = Label(root, text='Когда родился ' + str(i) + ' ? Ответ введите в формате dd.mm.yyyy')
-    question_1.pack()
-    global answer
-    answer = Entry(root)
-    answer.pack()
-    answer.focus()
-    button_1 = Button(root, text='Ввод', command=answer_func).pack()
-    # button_1.pack()
-    # answer.focus()
+a = 0
+b = 1
+
 
 def main():
-    for i in people:
-        question()
-
-        # question = Label(root, text='Когда родился ' + str(i) + ' ? Ответ введите в формате dd.mm.yyyy')
-        # question.pack()
-        # global answer
-        # answer = Entry(root)
-        # answer.pack()
-        # answer.focus()
-        # button_1 = Button(root, text='Ввод', command=answer_func).pack()
-        # # button_1.pack()
-        # answer.focus()
-        # count +=1
-        # end_answer = answer.get()
-        # print(end_answer)
-        # if end_answer == people[i]:
-        #     print('Верно')
-        #     right += 1
-        #     question.destroy()
-        #     answer.destroy()
-        #     button_1.destroy()
-        # else:
-        #     print('Он родился ' + days[people[i][:2]] + ' ' + month[people[i][3:5]] + ' ' + people[i][-4:] + ' года')
-        #     wrong += 1
-        #     question.destroy()
-        #     answer.destroy()
-        #     button_1.destroy()
+    label.destroy()
+    button.destroy()
+    question = Label(root, text='Когда родился ' + str(people[a]) + ' ? Ответ введите в формате dd.mm.yyyy').pack()
+    answer = Entry(root)
+    answer.pack()
+    button_1 = Button(root, text='Ввод', command=answer_func).pack()
+    # end_answer = answer.get()
+    # print(end_answer)
+    # answer.focus()
+    # count +=1
+    # end_answer = answer.get()
+    # if end_answer == people[i]:
+    #     print('Верно')
+    #     right += 1
+    #     question.destroy()
+    #     answer.destroy()
+    #     button_1.destroy()
+    # else:
+    #     print('Он родился ' + days[people[i][:2]] + ' ' + month[people[i][3:5]] + ' ' + people[i][-4:] + ' года')
+    #     wrong += 1
+    #     question.destroy()
+    #     answer.destroy()
+    #     button_1.destroy()
     # print('Количество правильных ответов: ', right)
     # print('Количество неправильных ответов: ', wrong)
     # print('Процент правильных ответов: ', 20 * right)
 
-root.title('Первая программа с GUI')
+root.title('Викторина')
 root.geometry('800x300')
 label = Label(root, text='Выберите нужное из меню')
 label.pack()
