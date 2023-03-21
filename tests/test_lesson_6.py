@@ -1,4 +1,4 @@
-import divisor_master
+from Lesson_5 import divisor_master
 
 
 def test_divisors():
