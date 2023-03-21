@@ -51,4 +51,4 @@ def kanon(a):
 def max_divisor(a):
     return divisors(a)[-1]
 
-print(max_prime_divisor(a))
+print(divisors(a))
