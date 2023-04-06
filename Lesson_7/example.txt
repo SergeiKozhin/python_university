@@ -1,6 +1,0 @@
-Car brand,Model,Fuel,Price
-Toyota,Corolla,6.3,1500000
-Ford,Fiesta,5.5,1100000
-Kia,Sportage,7.8,1800000
-Honda,Civic,6.7,1600000
-BMW,X5,9.2,3500000
