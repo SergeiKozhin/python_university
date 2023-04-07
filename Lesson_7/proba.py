@@ -2,8 +2,6 @@ from docxtpl import DocxTemplate
 import csv
 import json
 
-
-
 data = [
     ['Mazda', 'CX-5', '7.4', '2390000'],
     ['Toyota', 'Camry', '8.3', '2450000'],
@@ -16,13 +14,11 @@ with open('data.txt', 'w') as file:
     for row in data:
         file.write(','.join(row) + '\n')
 
-
-
 doc = DocxTemplate('document_template.docx')
 
 with open('data.txt', 'r') as file:
     rows = [line.strip().split(',') for line in file]
-    
+
 context = {'cars': []}
 for row in rows:
     context['cars'].append({
@@ -38,7 +34,6 @@ with open('data.txt', 'r') as in_file, open('data.csv', 'w', newline='') as out_
     writer = csv.writer(out_file)
     for row in csv.reader(in_file):
         writer.writerow(row)
-
 
 with open('data.txt', 'r') as file:
     rows = [line.strip().split(',') for line in file]
