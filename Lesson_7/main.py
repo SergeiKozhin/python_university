@@ -1,43 +1,47 @@
-# 1. Создание текстового файла с данными
-with open("car_data.txt", "w") as f:
-    f.write("Марка авто,Модель авто,Расход топлива,Стоимость\n")
-    f.write("Toyota,Camry,7.8,1500000\n")
-    f.write("Kia,Sportage,8.5,1200000\n")
-    f.write("Hyundai,Accent,6.2,900000\n")
-
-# 2. Создание шаблона документа doc
-from docx import Document
-
-document = Document()
-document.add_heading("Данные автомобилей")
-document.add_paragraph("Марка авто: ...")
-document.add_paragraph("Модель авто: ...")
-document.add_paragraph("Расход топлива: ...")
-document.add_paragraph("Стоимость: ...")
-
-document.save("car_data.docx")
-
-# 3. Внесение данных из файла в шаблон
+from docxtpl import DocxTemplate
 import csv
-
-with open("car_data.csv", "w") as f:
-    writer = csv.writer(f)
-    writer.writerow(["Марка авто", "Модель авто", "Расход топлива", "Стоимость"])
-    with open("car_data.txt", "r") as data:
-        for line in data:
-            row = line.strip().split(",")
-            writer.writerow(row)
-
-# 4. Создание json-файла с данными о машине
 import json
 
-data = []
-with open("car_data.txt", "r") as f:
-    header = f.readline().strip().split(",")
-    for line in f:
-        row = line.strip().split(",")
-        car_data = {header[i]:row[i] for i in range(len(header))}
-        data.append(car_data)
+data = [
+    ['Mazda', 'CX-5', '7.4', '2390000']
+]
 
-with open("car_data.json", "w") as f:
-    json.dump(data, f)
+with open('data.txt', 'w') as file:
+    for row in data:
+        file.write(','.join(row))
+
+template = DocxTemplate('document_template.docx')
+
+with open('data.txt', 'r') as file:
+    rows = [line.strip().split(',') for line in file]
+
+context = {'cars': []}
+for row in rows:
+    context['cars'].append({
+        'brand': row[0],
+        'model': row[1],
+        'fuel_consumption': row[2],
+        'price': row[3]
+    })
+template.render(context['cars'][0])
+template.save('document.docx')
+
+with open('data.txt', 'r') as in_file, open('data.csv', 'w', newline='') as out_file:
+    writer = csv.writer(out_file)
+    for row in csv.reader(in_file):
+        writer.writerow(row)
+
+with open('data.txt', 'r') as file:
+    rows = [line.strip().split(',') for line in file]
+
+cars = []
+for row in rows:
+    cars.append({
+        'brand': row[0],
+        'model': row[1],
+        'fuel_consumption': row[2],
+        'price': row[3]
+    })
+
+with open('data.json', 'w') as file:
+    json.dump(cars, file)
